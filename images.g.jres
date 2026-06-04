@@ -1,0 +1,22 @@
+{
+    "image1": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADw////AAAAAPAAAAAAAAD//wAAAAAAAA8AAAAAAAAADwAAAAAAAAD//wAAAAAAAADwAAAAAAAAAPD///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "myImage"
+    },
+    "image2": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAA8P///w4AAADw////DgAAAPD///8PAAD/8P//H/8A8O7///H/8f/v7/7/Hx//D+/u7/8fH/8P7+7v//H//w/v7/7/////D/Du//8RH/8PAP/w/x8f//8AAPD/8f//AAAA8P///w8AAADw////DgAAAPD///8OAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "myImage0"
+    },
+    "image3": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAADwAAAAAAAA8P9V//9VAAD//wD1XwBVVf//AFAFAFVV//8AUAUAVVX//wBQBVVVVf//AFAFBVVV//8AUAUFVVX//wBQBQVVVf//AFAFBVVV//8AUAUFUAD//wBQVVVVAPD/AAAAAAAAAPAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "Grammy"
+    },
+    "*": {
+        "mimeType": "image/x-mkcd-f4",
+        "dataEncoding": "base64",
+        "namespace": "myImages"
+    }
+}
