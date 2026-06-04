@@ -74,7 +74,6 @@ function loadSecretLeve2 () {
     if (mic) {
         sprites.destroy(mic)
     }
-    mic = sprites.create(assets.image`myImage1`, SpriteKind.Food)
     // place mic on a floor tile
     locPost = pickRandomFloorTile()
     tiles.placeOnTile(mic, locPost)
