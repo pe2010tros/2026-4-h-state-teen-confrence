@@ -27,6 +27,24 @@ function createSecretEnemy(x: number, y: number) {
     enemyList.push(tempTaylor)
 }
 
+function pickRandomFloorTile() {
+    let candidates: tiles.Location[] = []
+    candidates = tiles.getTilesByType(sprites.dungeon.floorLight0)
+    if (candidates.length == 0) {
+        candidates = tiles.getTilesByType(sprites.builtin.field1)
+    }
+    if (candidates.length == 0) {
+        candidates = tiles.getTilesByType(sprites.skillmap.islandTile1)
+    }
+    if (candidates.length == 0) {
+        candidates = tiles.getTilesByType(myTiles.tile3)
+    }
+    if (candidates.length == 0) {
+        return tiles.getTileLocation(0, 0)
+    }
+    return candidates[randint(0, candidates.length - 1)]
+}
+
 controller.B.onEvent(ControllerButtonEvent.Pressed, function on_b_pressed() {
     loadSecretLevel()
 })
@@ -62,15 +80,9 @@ function loadSecretLevel() {
         secretMic = sprites.create(assets.image`
             myImage1
             `, SpriteKind.Food)
-        // place secret mic at a random non-wall location
-        let sx = randint(5, tiles.tilemapColumns() * 16 - 5)
-        let sy = randint(5, tiles.tilemapRows() * 16 - 5)
-        secretMic.setPosition(sx, sy)
-        while (tiles.tileIsWall(tiles.locationOfSprite(secretMic))) {
-            sx = randint(5, tiles.tilemapColumns() * 16 - 5)
-            sy = randint(5, tiles.tilemapRows() * 16 - 5)
-            secretMic.setPosition(sx, sy)
-        }
+        // place secret mic on a random floor tile
+        let loc = pickRandomFloorTile()
+        tiles.placeOnTile(secretMic, loc)
         secretMic.ay = 0
     }
     //  Spawn 3 slow-chasing enemies
@@ -140,13 +152,9 @@ function loadPostSecretLevel() {
     mic = sprites.create(assets.image`
         myImage1
         `, SpriteKind.Food)
-    // place mic and ensure it's not inside a wall tile
-    mic.setPosition(190, 10)
-    let maxX = tiles.tilemapColumns() * 16 - 5
-    let maxY = tiles.tilemapRows() * 16 - 5
-    while (tiles.tileIsWall(tiles.locationOfSprite(mic))) {
-        mic.setPosition(randint(5, maxX), randint(5, maxY))
-    }
+    // place mic on a floor tile
+    let locPost = pickRandomFloorTile()
+    tiles.placeOnTile(mic, locPost)
     mic.ay = 300
 
     scene.cameraFollowSprite(Player_YE)
@@ -204,13 +212,9 @@ Taylor.setPosition(105, 27)
 mic = sprites.create(assets.image`
     myImage1
     `, SpriteKind.Food)
-// place mic and ensure it's not inside a wall tile
-mic.setPosition(190, 10)
-let maxX_init = tiles.tilemapColumns() * 16 - 5
-let maxY_init = tiles.tilemapRows() * 16 - 5
-while (tiles.tileIsWall(tiles.locationOfSprite(mic))) {
-    mic.setPosition(randint(5, maxX_init), randint(5, maxY_init))
-}
+// place initial mic on a floor tile
+let initLoc = pickRandomFloorTile()
+tiles.placeOnTile(mic, initLoc)
 controller.moveSprite(Player_YE, 100, 0)
 Player_YE.ay = 300
 Taylor.ay = 300
