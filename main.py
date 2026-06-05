@@ -51,7 +51,8 @@ controller.A.on_event(ControllerButtonEvent.PRESSED, on_a_pressed)
 
 def loadSecretLeve2():
     global isInSecretLevel, enemyList, locPost
-    isInSecretLevel = False
+    # mark we're in a secret level so the on_update logic moves enemies
+    isInSecretLevel = True
     # clean up secret enemies
     k = 0
     while k <= len(enemyList) - 1:
